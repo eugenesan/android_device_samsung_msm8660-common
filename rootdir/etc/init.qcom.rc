@@ -200,7 +200,11 @@ on fs
     mkdir /tombstones/mdm 0771 system system
     mkdir /tombstones/lpass 0771 system system
 
+    # Enable temporary /data during encryption
+    setprop ro.crypto.tmpfs_options size=128m,mode=0771,uid=1000,gid=1000
+
     mount_all fstab.qcom
+
     # Enable zRAM
     swapon_all /fstab.qcom
 
